@@ -69,7 +69,9 @@ const ProductSection = ({cart,setCart}) => {
                 ${product.price} / {product.period}
               </p>
 
-              <p>{product.tag}</p>
+              <span className="inline-block bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold mb-3">
+                {product.tag}
+                </span>
 
               <div>
                 {product.features.map((feature, index) => (
