@@ -12,7 +12,12 @@ const ProductSection = () => {
   }, []);
 
   const handleAddToCart = (product) => {
-    setCart([...cart, product]);
+    const exists= cart.find((item)=>item.id===product.id);
+    if(exists){
+        alert("product already in cart");
+        return;
+    }
+    setCart([...cart,product]);
   };
   const handleRemoveFromCart=(id)=>{
 
