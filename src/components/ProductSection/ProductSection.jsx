@@ -34,6 +34,12 @@ const ProductSection = ({cart,setCart}) => {
     setCart([]);
   }
 
+
+  const tagStyle={
+    popular:"bg-purple-100 text-purple-700",
+    new:"bg-green-100 text-green-700",
+    "best-seller":"bg-yellow-100 text-yellow-700"
+  }
   return (
     <div>
       <h1>Premium Digital Tools</h1>
@@ -69,7 +75,9 @@ const ProductSection = ({cart,setCart}) => {
                 ${product.price} / {product.period}
               </p>
 
-              <span className="inline-block bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold mb-3">
+              <span className={`inline-block  px-3 py-1 rounded-full text-sm font-semibold mb-3 ${
+                tagStyle[product.tagType]
+              }`}>
                 {product.tag}
                 </span>
 
