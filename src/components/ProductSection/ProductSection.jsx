@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-
-const ProductSection = () => {
+//productSection.jsx
+const ProductSection = ({cart,setCart}) => {
   const [activeTab, setActiveTab] = useState("products");
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+ 
 
   useEffect(() => {
     fetch("/data.json")
@@ -27,6 +27,8 @@ const ProductSection = () => {
   }
 
   console.log(cart);
+
+  console.log("ProductSection cart:", cart);
 
   const handleCheckout=()=>{
     setCart([]);
