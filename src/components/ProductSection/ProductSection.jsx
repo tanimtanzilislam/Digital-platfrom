@@ -14,6 +14,12 @@ const ProductSection = () => {
   const handleAddToCart = (product) => {
     setCart([...cart, product]);
   };
+  const handleRemoveFromCart=(id)=>{
+
+    const remaining= cart.filter(item=>item.id!==id)
+    setCart(remaining);
+
+  }
 
   console.log(cart);
 
@@ -88,7 +94,7 @@ const ProductSection = () => {
                     <p>${item.price}</p>
                   </div>
 
-                  <button className="border px-3 py-1 rounded">
+                  <button onClick={()=>handleRemoveFromCart(item.id)} className="border px-3 py-1 rounded">
                     Remove
                   </button>
                 </div>
