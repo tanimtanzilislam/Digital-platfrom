@@ -23,6 +23,10 @@ const ProductSection = () => {
 
   console.log(cart);
 
+  const handleCheckout=()=>{
+    setCart([]);
+  }
+
   return (
     <div>
       <h1>Premium Digital Tools</h1>
@@ -100,7 +104,7 @@ const ProductSection = () => {
                 </div>
               ))}
 
-              <button className="border px-4 py-2 rounded">
+              <button onClick={handleCheckout} className="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">
                 Proceed to Checkout
               </button>
             </div>
