@@ -111,6 +111,9 @@ const ProductSection = ({cart,setCart}) => {
                 </div>
               ))}
 
+<p className="text-xl font-bold">
+ Total:${cart.reduce((total,item)=>total+item.price,0)}
+</p>
               <button onClick={handleCheckout} className="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">
                 Proceed to Checkout
               </button>
