@@ -1,10 +1,24 @@
 import { useState, useEffect } from "react";
 //productSection.jsx
+
+import designTool from "../../assets/products/design-tool.png";
+import operation from "../../assets/products/operation.png";
+import portfolio from "../../assets/products/portfolio.png";
+import shoppingcart from "../../assets/products/shopping-cart.png";
+import socialmedia from "../../assets/products/social-media.png";
+import writing from "../../assets/products/writing_2327400 1.png";
 const ProductSection = ({cart,setCart}) => {
   const [activeTab, setActiveTab] = useState("products");
   const [products, setProducts] = useState([]);
  
-
+const productImages = {
+  "design-tool.png": designTool,
+  "operation.png": operation,
+  "portfolio.png": portfolio,
+  "shopping-cart.png": shoppingcart,
+  "social-media.png": socialmedia,
+  "writing_2327400 1.png": writing
+};
   useEffect(() => {
     fetch("/data.json")
       .then((res) => res.json())
@@ -65,7 +79,10 @@ const ProductSection = ({cart,setCart}) => {
               className="border rounded-xl p-5 shadow"
               key={product.id}
             >
-              <h2>{product.icon}</h2>
+              <div >
+            <img src={productImages[product.icon]} alt={product.name} className="w-12 h-12 object-contain mb-4"></img>
+
+              </div>  
 
               <h2>{product.name}</h2>
 
