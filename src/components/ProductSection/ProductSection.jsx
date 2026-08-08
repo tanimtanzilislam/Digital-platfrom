@@ -40,11 +40,11 @@ const productImages = {
 
   }
 
-  console.log(cart);
 
   console.log("ProductSection cart:", cart);
 
   const handleCheckout=()=>{
+    alert("Checkout successful!");
     setCart([]);
   }
 
@@ -76,37 +76,44 @@ const productImages = {
         <div className="grid md:grid-cols-3 gap-6">
           {products.map((product) => (
             <div
-              className="border rounded-xl p-5 shadow"
+              className=" relative border rounded-xl p-5 shadow "
               key={product.id}
             >
-              <div >
+              <div  className="flex justify-between items-start mb-4">
             <img src={productImages[product.icon]} alt={product.name} className="w-12 h-12 object-contain mb-4"></img>
 
-              </div>  
 
-              <h2>{product.name}</h2>
-
-              <p>{product.description}</p>
-
-              <p>
-                ${product.price} / {product.period}
-              </p>
-
-              <span className={`inline-block  px-3 py-1 rounded-full text-sm font-semibold mb-3 ${
+ <span className={`  inline-block  px-3 py-1 rounded-full text-sm font-semibold mb-3 ${
                 tagStyle[product.tagType]
               }`}>
                 {product.tag}
                 </span>
+              </div>  
+
+              <h2 className="text-xl font-bold mb-2">{product.name}</h2>
+
+              <p className="text-gray-600 mb-4">{product.description}</p>
+
+              <p className="text-2xl font-bold mb-4">
+                ${product.price} 
+                <span>
+                  {" "}/ {product.period}
+
+                  </span>
+              </p>
+                
+
+             
 
               <div>
                 {product.features.map((feature, index) => (
-                  <p key={index}>✔ {feature}</p>
+                  <p key={index} className="text-gray-600 mb-2">✔ {feature}</p>
                 ))}
               </div>
 
               <button
                 onClick={() => handleAddToCart(product)}
-                className="mt-4 border px-4 py-2 rounded"
+                className="mt-auto w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
               >
                 Buy Now
               </button>
@@ -115,10 +122,16 @@ const productImages = {
         </div>
       ) : (
         <div>
-          <h2 className="text-2xl font-bold mb-4">All Cart</h2>
+          <h2 className="text-2xl text-center font-bold mb-4">All Cart</h2>
 
           {cart.length === 0 ? (
-            <p>Your cart is empty.</p>
+            <div className="text-center py-12">
+
+              <h3 className="text-xl font-bold mb-2">Your cart is empty.</h3>
+                 <p className="text-gray-500">
+      Add some products to your cart to get started.
+    </p>
+              </div>
           ) : (
             <div className="space-y-4">
               {cart.map((item) => (
@@ -127,12 +140,12 @@ const productImages = {
                   className="border rounded-xl p-4 shadow flex justify-between items-center"
                 >
                   <div>
-                    <p>{item.icon}</p>
-                    <h3>{item.name}</h3>
-                    <p>${item.price}</p>
+                   <img src={productImages[item.icon]} alt={item.name} className="w-12 h-12 object-contain"></img>
+                    <h3 className="font-bold text-lg ">{item.name}</h3>
+                    <p className="text-gray-600">${item.price}</p>
                   </div>
 
-                  <button onClick={()=>handleRemoveFromCart(item.id)} className="border px-3 py-1 rounded">
+                  <button onClick={()=>handleRemoveFromCart(item.id)} className="border border-red-500  px-4 py-2 rounded-lg font-medium hover:bg-red-500 hover:text-white transition">
                     Remove
                   </button>
                 </div>
